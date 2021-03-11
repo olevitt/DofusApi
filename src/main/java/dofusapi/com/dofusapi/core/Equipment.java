@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Equipment {
-
+public class Equipment
+{
     @JsonProperty("_id")
     private int id;
     private int ankamaId;
