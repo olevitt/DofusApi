@@ -1,15 +1,21 @@
 package dofusapi.com.dofusapi.controller;
 
-import dofusapi.com.dofusapi.apirequest.ClassRequest;
+import dofusapi.com.dofusapi.api.DofusClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@RequestMapping("/classe")
 @RestController
 public class ClassController
 {
-    @RequestMapping("/classes")
+    @Autowired
+    private DofusClient dofusClient;
+
+    @GetMapping
     public String displayAllClasses()
     {
-        return new ClassRequest().getAllClasses();
+        return dofusClient.getAllClasses();
     }
 }
