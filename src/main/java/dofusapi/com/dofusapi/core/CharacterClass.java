@@ -13,59 +13,73 @@ public class CharacterClass {
     private String maleImg;
     private String femaleImg;
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public int getAnkamaId() {
+    public int getAnkamaId()
+    {
         return ankamaId;
     }
 
-    public void setAnkamaId(int ankamaId) {
+    public void setAnkamaId(int ankamaId)
+    {
         this.ankamaId = ankamaId;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public int getLevel() {
+    public int getLevel()
+    {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(int level)
+    {
         this.level = level;
     }
 
-    public String getType() {
+    public String getType()
+    {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(String type)
+    {
         this.type = type;
     }
 
-    public String getMaleImg() {
+    public String getMaleImg()
+    {
         return maleImg;
     }
 
-    public void setMaleImg(String maleImg) {
+    public void setMaleImg(String maleImg)
+    {
         this.maleImg = maleImg;
     }
 
-    public String getFemaleImg() {
+    public String getFemaleImg()
+    {
         return femaleImg;
     }
 
-    public void setFemaleImg(String femaleImg) {
+    public void setFemaleImg(String femaleImg)
+    {
         this.femaleImg = femaleImg;
     }
 }
