@@ -1,5 +1,8 @@
 package dofusapi.com.dofusapi.api;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import dofusapi.com.dofusapi.core.CharacterClass;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -13,6 +16,12 @@ import java.io.IOException;
 public class DofusClientApi implements DofusClient
 {
     OkHttpClient client = new OkHttpClient();
+    private ObjectMapper objectMapper = new ObjectMapper();
+
+    public DofusClientApi()
+    {
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
+    }
 
     public String run(String url) throws IOException
     {
@@ -24,17 +33,10 @@ public class DofusClientApi implements DofusClient
         }
     }
 
-    public String getAllClasses()
+    public CharacterClass[] getAllClasses() throws IOException
     {
-        try
-        {
-            String content = new DofusClientApi().run("https://fr.dofus.dofapi.fr/classes");
-            return content;
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-            return  null;
-        }
+        String content = new DofusClientApi().run("https://fr.dofus.dofapi.fr/classes");
+        CharacterClass[] mappedClass = objectMapper.readValue(content, CharacterClass[].class);
+        return mappedClass;
     }
 }

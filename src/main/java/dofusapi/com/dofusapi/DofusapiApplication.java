@@ -10,5 +10,4 @@ public class DofusapiApplication
 	{
 		SpringApplication.run(DofusapiApplication.class, args);
 	}
-
 }
