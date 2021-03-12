@@ -4,8 +4,6 @@ import dofusapi.com.dofusapi.core.CharacterClass;
 import dofusapi.com.dofusapi.core.Equipment;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-
 @Service
 public class DofusClientDb implements DofusClient
 {
