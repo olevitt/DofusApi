@@ -2,7 +2,10 @@ package dofusapi.com.dofusapi.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class CharacterClass
+import java.util.ArrayList;
+import java.util.Map;
+
+public class Equipment
 {
     @JsonProperty("_id")
     private int id;
@@ -10,8 +13,9 @@ public class CharacterClass
     private String name;
     private int level;
     private String type;
-    private String maleImg;
-    private String femaleImg;
+    private String imgUrl;
+    private ArrayList<Map<String, Object>> statistics;
+    private String[] conditions;
 
     public int getId()
     {
@@ -63,24 +67,33 @@ public class CharacterClass
         this.type = type;
     }
 
-    public String getMaleImg()
+    public String getImgUrl()
     {
-        return maleImg;
+        return imgUrl;
     }
 
-    public void setMaleImg(String maleImg)
+    public void setImgUrl(String imgUrl)
     {
-        this.maleImg = maleImg;
+        this.imgUrl = imgUrl;
     }
 
-    public String getFemaleImg()
+    public ArrayList<Map<String, Object>> getStatistics()
     {
-        return femaleImg;
+        return statistics;
     }
 
-    public void setFemaleImg(String femaleImg)
+    public void setStatistics(ArrayList<Map<String, Object>> statistics)
     {
-        this.femaleImg = femaleImg;
+        this.statistics = statistics;
+    }
+
+    public String[] getConditions()
+    {
+        return conditions;
+    }
+
+    public void setConditions(String[] conditions)
+    {
+        this.conditions = conditions;
     }
 }
-

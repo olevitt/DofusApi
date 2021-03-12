@@ -3,6 +3,7 @@ package dofusapi.com.dofusapi.api;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dofusapi.com.dofusapi.core.CharacterClass;
+import dofusapi.com.dofusapi.core.Equipment;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -33,10 +34,33 @@ public class DofusClientApi implements DofusClient
         }
     }
 
-    public CharacterClass[] getAllClasses() throws IOException
+    public CharacterClass[] getAllClasses()
     {
-        String content = new DofusClientApi().run("https://fr.dofus.dofapi.fr/classes");
-        CharacterClass[] mappedClass = objectMapper.readValue(content, CharacterClass[].class);
-        return mappedClass;
+        try
+        {
+            String content = new DofusClientApi().run("https://fr.dofus.dofapi.fr/classes");
+            CharacterClass[] mappedClass = objectMapper.readValue(content, CharacterClass[].class);
+            return mappedClass;
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Equipment[] getAllEquipment()
+    {
+        try
+        {
+            String content = new DofusClientApi().run("https://fr.dofus.dofapi.fr/equipments");
+            Equipment[] mappedEquipment = objectMapper.readValue(content, Equipment[].class);
+            return mappedEquipment;
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
