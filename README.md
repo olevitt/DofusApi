@@ -1,1 +1,1 @@
-# DofusAPI
+# DofusApi
