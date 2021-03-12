@@ -23,4 +23,3 @@ jobs:
       - name: Verify the build
         run:
           cd target
-          ls -a
