@@ -1,14 +1,14 @@
 name: DofusAPI CI
+
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  release:
+    types: [created]
+    
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
     
+    steps:
       - name: Checkout main branch from GitHub
         uses: actions/checkout@v2
 
