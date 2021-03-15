@@ -1,4 +1,4 @@
-package dofusapi.com.dofusapi.api;
+package dofusapi.com.dofusapi.client;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

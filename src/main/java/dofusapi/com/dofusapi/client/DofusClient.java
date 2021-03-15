@@ -1,4 +1,4 @@
-package dofusapi.com.dofusapi.api;
+package dofusapi.com.dofusapi.client;
 
 import dofusapi.com.dofusapi.core.CharacterClass;
 import dofusapi.com.dofusapi.core.Equipment;
