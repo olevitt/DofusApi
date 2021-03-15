@@ -1,6 +1,6 @@
 package dofusapi.com.dofusapi.controller;
 
-import dofusapi.com.dofusapi.api.DofusClient;
+import dofusapi.com.dofusapi.client.DofusClient;
 import dofusapi.com.dofusapi.core.Equipment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
