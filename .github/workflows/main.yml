@@ -42,7 +42,7 @@ jobs:
         with:
           file: ./Dockerfile
           push: true
-          tags: leog7/dofus_api1:tagname
+          tags: leog7/dofus_api1:latest
         
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
