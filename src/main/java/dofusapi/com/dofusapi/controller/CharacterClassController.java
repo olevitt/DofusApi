@@ -1,6 +1,7 @@
 package dofusapi.com.dofusapi.controller;
 
 import dofusapi.com.dofusapi.client.DofusClient;
+import dofusapi.com.dofusapi.core.CharacterClass;
 import dofusapi.com.dofusapi.core.Equipment;
 import dofusapi.com.dofusapi.storage.DofusDOA;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/equipment")
+@RequestMapping("/classe")
 @RestController
-public class EquipmentController
+public class CharacterClassController
 {
     @Autowired
     private DofusClient dofusClient;
@@ -20,13 +21,13 @@ public class EquipmentController
     private DofusDOA dofusDOA;
 
     @GetMapping
-    public Equipment[] displayAllEquipment()
+    public CharacterClass[] displayAllCharacterClasses()
     {
-        return dofusClient.getAllEquipment();
+        return dofusClient.getAllClasses();
     }
 
     @PostMapping(value = "/create")
-    public String createEquipment()
+    public String createCharacterClasse()
     {
         /*Equipment equipmentTest = new Equipment();
         equipmentTest.setId(5);
@@ -34,16 +35,16 @@ public class EquipmentController
         equipmentTest.setLevel(116);
         dofusDOA.insererEquipment(equipmentTest);
         DofusClientCache dofusClientCache = new DofusClientCache();*/
-        this.EquipmentCache();
+        this.CharacterClasseCache();
         return "working";
     }
 
-    public void EquipmentCache()
+    public void CharacterClasseCache()
     {
-        Equipment[] equipments =   dofusClient.getAllEquipment();
-        for(Equipment equipment : equipments)
+        CharacterClass[] characterClasses =   dofusClient.getAllClasses();
+        for(CharacterClass characterClass : characterClasses)
         {
-            dofusDOA.insererEquipment(equipment);
+            dofusDOA.insererCharacterClass(characterClass);
         }
     }
 }

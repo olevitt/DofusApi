@@ -2,8 +2,13 @@ package dofusapi.com.dofusapi.core;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class CharacterClass
 {
+    @Id
     @JsonProperty("_id")
     private int id;
     private int ankamaId;

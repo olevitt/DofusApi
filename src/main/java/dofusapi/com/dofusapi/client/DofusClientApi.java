@@ -7,13 +7,11 @@ import dofusapi.com.dofusapi.core.Equipment;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
 @Service
-@Primary
 public class DofusClientApi implements DofusClient
 {
     OkHttpClient client = new OkHttpClient();
