@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 @Entity
-public class Equipment
-{
+public class EquipmentClean {
     @Id
     @JsonProperty("_id")
     private int id;
@@ -99,4 +98,5 @@ public class Equipment
     {
         this.conditions = conditions;
     }
+
 }

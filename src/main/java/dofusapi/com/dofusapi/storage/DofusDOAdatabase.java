@@ -1,7 +1,7 @@
 package dofusapi.com.dofusapi.storage;
 
 import dofusapi.com.dofusapi.core.CharacterClass;
-import dofusapi.com.dofusapi.core.Equipment;
+import dofusapi.com.dofusapi.core.EquipmentClean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -30,14 +30,14 @@ public class DofusDOAdatabase implements DofusDOA{
         this.connectionURL = connectionURL;
     }
 
-    public Iterable<Equipment> getMyEquipments()
+    public Iterable<EquipmentClean> getMyEquipments()
     {
         return null;
     }
 
-    public void insererEquipment(Equipment equipment)
+    public void insererEquipment(EquipmentClean equipmentClean)
     {
-        equipmentRepository.save(equipment);
+        equipmentRepository.save(equipmentClean);
     }
 
     public Iterable<CharacterClass> getMyPCharacterClasses()

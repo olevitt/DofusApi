@@ -1,26 +1,25 @@
 package dofusapi.com.dofusapi.client;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.deser.DeserializationProblemHandler;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import dofusapi.com.dofusapi.core.CharacterClass;
-import dofusapi.com.dofusapi.core.Equipment;
+import dofusapi.com.dofusapi.core.EquipmentClean;
+import dofusapi.com.dofusapi.core.EquipmentFromClient;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Map;
 
 @Service
 public class DofusClientApi implements DofusClient
 {
     OkHttpClient client = new OkHttpClient();
     private ObjectMapper objectMapper = new ObjectMapper();
+    ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
 
     public DofusClientApi()
     {
@@ -52,30 +51,39 @@ public class DofusClientApi implements DofusClient
         }
     }
 
-    public Equipment[] getAllEquipment()
+    public EquipmentClean[] getAllEquipment()
     {
         try
         {
             String content = new DofusClientApi().run("https://fr.dofus.dofapi.fr/equipments");
-            DeserializationProblemHandler deserializationProblemHandler = new UnMarshallingErrorHandler();
-            objectMapper.addHandler(deserializationProblemHandler);
-            Equipment[] mappedEquipment = objectMapper.readValue(content, Equipment[].class);
-            return mappedEquipment;
+            EquipmentFromClient[] mapperTest = objectMapper.readValue(content, EquipmentFromClient[].class);
+            for( EquipmentFromClient equipment : mapperTest)
+            {
+                if(equipment.getStatistics() != null)
+                {
+                    for(Map<String, Object> equipmentStats : equipment.getStatistics())
+                    {
+                        if(equipmentStats.containsKey("emote"))
+                        {
+                            equipmentStats.remove("emote");
+                        }
+
+                        if(equipmentStats.containsKey("title"))
+                        {
+                            equipmentStats.remove("title");
+                        }
+                    }
+                }
+            }
+
+            String cleanContent = objectWriter.writeValueAsString(mapperTest);
+            EquipmentClean[] mappedEquipmentClean = objectMapper.readValue(cleanContent, EquipmentClean[].class);
+            return mappedEquipmentClean;
         }
         catch(IOException e)
         {
             e.printStackTrace();
             return null;
-        }
-    }
-
-    class UnMarshallingErrorHandler extends DeserializationProblemHandler {
-        @Override
-        public boolean handleUnknownProperty(DeserializationContext ctxt, JsonParser jp, JsonDeserializer deserializer, Object beanOrClass, String propertyName) throws IOException, JsonProcessingException {
-            boolean result = false;
-            super.handleUnknownProperty(ctxt, jp, deserializer, beanOrClass, propertyName);
-            System.out.println("Property with name '" + propertyName + "' doesn't exist in Class of type '" + beanOrClass.getClass().getName() + "'");
-            return true; // returns true to inform the deserialization process that we can handle the error and it can continue deserializing and returns false, if we want to stop the deserialization immediately.
         }
     }
 }

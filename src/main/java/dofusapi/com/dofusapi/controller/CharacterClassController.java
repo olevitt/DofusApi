@@ -2,7 +2,6 @@ package dofusapi.com.dofusapi.controller;
 
 import dofusapi.com.dofusapi.client.DofusClient;
 import dofusapi.com.dofusapi.core.CharacterClass;
-import dofusapi.com.dofusapi.core.Equipment;
 import dofusapi.com.dofusapi.storage.DofusDOA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,12 +28,6 @@ public class CharacterClassController
     @PostMapping(value = "/create")
     public String createCharacterClasse()
     {
-        /*Equipment equipmentTest = new Equipment();
-        equipmentTest.setId(5);
-        equipmentTest.setName("equipment test");
-        equipmentTest.setLevel(116);
-        dofusDOA.insererEquipment(equipmentTest);
-        DofusClientCache dofusClientCache = new DofusClientCache();*/
         this.CharacterClasseCache();
         return "working";
     }
