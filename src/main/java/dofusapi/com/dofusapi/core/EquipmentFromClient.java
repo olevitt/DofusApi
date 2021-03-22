@@ -1,6 +1,7 @@
 package dofusapi.com.dofusapi.core;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class EquipmentFromClient {
@@ -11,7 +12,7 @@ public class EquipmentFromClient {
     private int level;
     private String type;
     private String imgUrl;
-    private ArrayList<Map<String, Object>> statistics;
+    private List<Map<String, Object>> statistics;
     private String[] conditions;
 
     public int getId() {
@@ -62,11 +63,11 @@ public class EquipmentFromClient {
         this.imgUrl = imgUrl;
     }
 
-    public ArrayList<Map<String, Object>> getStatistics() {
+    public List<Map<String, Object>> getStatistics() {
         return statistics;
     }
 
-    public void setStatistics(ArrayList<Map<String, Object>> statistics) {
+    public void setStatistics(List<Map<String, Object>> statistics) {
         this.statistics = statistics;
     }
 

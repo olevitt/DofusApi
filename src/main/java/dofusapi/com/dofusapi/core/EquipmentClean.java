@@ -10,6 +10,7 @@ import java.util.Map;
 public class EquipmentClean {
     @Id
     @JsonProperty("_id")
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private int ankamaId;
     private String name;

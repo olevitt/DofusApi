@@ -4,13 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class StatAmount {
+public class StatAmount implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int idStatAmount = 1;
+    private int idStatAmount;
     public int min;
     public int max;
 
@@ -28,5 +29,13 @@ public class StatAmount {
 
     public void setMax(int max) {
         this.max = max;
+    }
+
+    public int getIdStatAmount() {
+        return idStatAmount;
+    }
+
+    public void setIdStatAmount(int idStatAmount) {
+        this.idStatAmount = idStatAmount;
     }
 }
