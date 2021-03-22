@@ -37,7 +37,6 @@ public class EquipmentController
         EquipmentClean[] equipmentCleans =   dofusClient.getAllEquipment();
         for(EquipmentClean equipmentClean : equipmentCleans)
         {
-            System.out.println(equipmentClean.getId());
             dofusDOA.insererEquipment(equipmentClean);
         }
     }
